@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+width: 100%;
+}
+
+#image {
+    -webkit-animation: fade-in 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    
+}
+
+@-webkit-keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+
+
+
+p {
+    font-family: 'Lobster Two', cursive;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+
+#startkey {
+    -webkit-animation: fade-in 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in2 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation-duration: 1.5s;
+    animation-name: clignoter;
+    animation-iteration-count: infinite;
+    transition: none;
+}
+
+@-webkit-keyframes fade-in2 {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in2 {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+
+
+ 
+ @keyframes clignoter {
+   0%   { opacity:1; }
+   40%   {opacity:0; }
+   100% { opacity:1; }
+ } 
+
+
+ #body1 {
+  background-image: url(bluebg.jpg);
+ }
+
+h1 {
+  text-align: center;
+  padding: 40px;
+  font-family: 'Grenze', serif;
+  
+  font-size: 50px;
+  color: #0E1644;
+}
+
