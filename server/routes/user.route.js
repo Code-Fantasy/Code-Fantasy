@@ -27,3 +27,6 @@ router.post("/crystal/create", userController.createCrystal);
 
 // Supprimer un job (personnage)
 router.delete("/job/:id", userController.deleteUserById);
+
+
+module.exports = router;

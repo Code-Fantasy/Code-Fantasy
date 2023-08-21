@@ -11,16 +11,20 @@ const conn = mysql.createConnection({
 
 // Connexion à la base de données
 conn.connect((err) => {
-  if (err) throw err;
+  if (err) {
+    console.error("Error connecting to the database:", err);
+    throw err;
+  }
   console.log("Connected to the database");
 });
 
 // Fonction pour créer un joueur dans la base de données
 const createPlayer = (player, callback) => {
   const { name } = player;
-  const query = "INSERT INTO Player (name) VALUES (?)";
+  const query = "INSERT INTO player (name) VALUES (?)";
   conn.query(query, [name], (err, result) => {
     if (err) {
+      console.error("Error creating player:", err);
       callback(err, null);
     } else {
       callback(null, result.insertId);
@@ -33,6 +37,7 @@ const getPlayerById = (playerId, callback) => {
   const query = "SELECT * FROM Player WHERE idPlayer = ?";
   conn.query(query, [playerId], (err, rows) => {
     if (err) {
+      console.error("Error fetching player by ID:", err);
       callback(err, null);
     } else {
       callback(null, rows[0]);
@@ -46,6 +51,7 @@ const createJob = (job, callback) => {
   const query = "INSERT INTO Jobs (stats, HP, attack, dodge, skills, slash, protera, strike, firaga, curaga, url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   conn.query(query, [stats, HP, attack, dodge, skills, slash, protera, strike, firaga, curaga, url], (err, result) => {
     if (err) {
+      console.error("Error creating job:", err);
       callback(err, null);
     } else {
       callback(null, result.insertId);
@@ -59,6 +65,7 @@ const createStage = (stage, callback) => {
   const query = "INSERT INTO Stage (url) VALUES (?)";
   conn.query(query, [url], (err, result) => {
     if (err) {
+      console.error("Error creating stage:", err);
       callback(err, null);
     } else {
       callback(null, result.insertId);
@@ -72,6 +79,7 @@ const createSound = (sound, callback) => {
   const query = "INSERT INTO Sound (battleTheme, victoryTheme, menuTheme) VALUES (?, ?, ?)";
   conn.query(query, [battleTheme, victoryTheme, menuTheme], (err, result) => {
     if (err) {
+      console.error("Error creating sound:", err);
       callback(err, null);
     } else {
       callback(null, result.insertId);
@@ -85,6 +93,7 @@ const createXP = (xp, callback) => {
   const query = "INSERT INTO XP (value_XP) VALUES (?)";
   conn.query(query, [value], (err, result) => {
     if (err) {
+      console.error("Error creating XP:", err);
       callback(err, null);
     } else {
       callback(null, result.insertId);
@@ -92,13 +101,13 @@ const createXP = (xp, callback) => {
   });
 };
 
-
 //Fonction pour choisir son équipe
 const createTeam = (team, callback) => {
   const { name } = team;
   const query = "INSERT INTO Teams (name_Teams) VALUES (?)";
   conn.query(query, [name], (err, result) => {
     if (err) {
+      console.error("Error creating team:", err);
       callback(err, null);
     } else {
       callback(null, result.insertId);
@@ -112,6 +121,7 @@ const createCrystal = (crystal, callback) => {
   const query = "INSERT INTO Crystal (name_Crystal, url_Crystal) VALUES (?, ?)";
   conn.query(query, [name, url], (err, result) => {
     if (err) {
+      console.error("Error creating crystal:", err);
       callback(err, null);
     } else {
       callback(null, result.insertId);
@@ -124,6 +134,7 @@ const deleteUserById = (userId, callback) => {
   const query = "DELETE FROM Player WHERE idPlayer = ?";
   conn.query(query, [userId], (err, result) => {
     if (err) {
+      console.error("Error deleting user:", err);
       callback(err);
     } else {
       callback(null);
