@@ -19,22 +19,22 @@ conn.connect((err) => {
 });
 
 // Fonction pour créer un joueur dans la base de données
-const createPlayer = (player, callback) => {
-  const { name } = player;
-  const query = "INSERT INTO player (name) VALUES (?)";
-  conn.query(query, [name], (err, result) => {
+const createPlayer = (req, res) => {
+  const { name_Player } = req.body;
+  const query = "INSERT INTO player (name_Player) VALUES (?)";
+  conn.query(query, [name_Player], (err, result) => {
     if (err) {
-      console.error("Error creating player:", err);
-      callback(err, null);
-    } else {
-      callback(null, result.insertId);
-    }
+      console.error('erreur')
+      res.status(500).json({error: 'erreur'})
+  } else {
+      res.status(200).json({message: 'utilisateur enregistré'});
+  }
   });
 };
 
 // Fonction pour obtenir un joueur par son ID
 const getPlayerById = (playerId, callback) => {
-  const query = "SELECT * FROM Player WHERE idPlayer = ?";
+  const query = "SELECT * FROM player WHERE idPlayer_Player = ?";
   conn.query(query, [playerId], (err, rows) => {
     if (err) {
       console.error("Error fetching player by ID:", err);
