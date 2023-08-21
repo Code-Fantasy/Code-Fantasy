@@ -119,6 +119,18 @@ const createCrystal = (crystal, callback) => {
   });
 };
 
+// Fonction pour supprimer un utilisateur par son ID
+const deleteUserById = (userId, callback) => {
+  const query = "DELETE FROM Player WHERE idPlayer = ?";
+  conn.query(query, [userId], (err, result) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null);
+    }
+  });
+};
+
 // Exportation des fonctions pour les rendre disponibles dans d'autres fichiers
 module.exports = {
   createPlayer,
@@ -129,4 +141,5 @@ module.exports = {
   createXP,
   createTeam,
   createCrystal,
+  deleteUserById,
 };
