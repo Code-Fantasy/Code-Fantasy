@@ -1,5 +1,7 @@
+// Importation du module MySQL
 const mysql = require("mysql");
 
+// Création d'une connexion à la base de données en utilisant les informations d'environnement
 const conn = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -7,11 +9,13 @@ const conn = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
+// Connexion à la base de données
 conn.connect((err) => {
   if (err) throw err;
   console.log("Connected to the database");
 });
 
+// Fonction pour créer un joueur dans la base de données
 const createPlayer = (player, callback) => {
   const { name } = player;
   const query = "INSERT INTO Player (name) VALUES (?)";
@@ -24,6 +28,7 @@ const createPlayer = (player, callback) => {
   });
 };
 
+// Fonction pour obtenir un joueur par son ID
 const getPlayerById = (playerId, callback) => {
   const query = "SELECT * FROM Player WHERE idPlayer = ?";
   conn.query(query, [playerId], (err, rows) => {
@@ -35,6 +40,7 @@ const getPlayerById = (playerId, callback) => {
   });
 };
 
+// Fonction pour créer son perso dans la base de données
 const createJob = (job, callback) => {
   const { stats, HP, attack, dodge, skills, slash, protera, strike, firaga, curaga, url } = job;
   const query = "INSERT INTO Jobs (stats, HP, attack, dodge, skills, slash, protera, strike, firaga, curaga, url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -47,6 +53,7 @@ const createJob = (job, callback) => {
   });
 };
 
+// Fonction pour choisir son arène
 const createStage = (stage, callback) => {
   const { url } = stage;
   const query = "INSERT INTO Stage (url) VALUES (?)";
@@ -59,6 +66,7 @@ const createStage = (stage, callback) => {
   });
 };
 
+//Fonction pour choisir la musique
 const createSound = (sound, callback) => {
   const { battleTheme, victoryTheme, menuTheme } = sound;
   const query = "INSERT INTO Sound (battleTheme, victoryTheme, menuTheme) VALUES (?, ?, ?)";
@@ -71,6 +79,7 @@ const createSound = (sound, callback) => {
   });
 };
 
+//Fonction pour gérer l'xp
 const createXP = (xp, callback) => {
   const { value } = xp;
   const query = "INSERT INTO XP (value_XP) VALUES (?)";
@@ -83,6 +92,8 @@ const createXP = (xp, callback) => {
   });
 };
 
+
+//Fonction pour choisir son équipe
 const createTeam = (team, callback) => {
   const { name } = team;
   const query = "INSERT INTO Teams (name_Teams) VALUES (?)";
@@ -95,6 +106,7 @@ const createTeam = (team, callback) => {
   });
 };
 
+//Fonction pour gérer les crystaux
 const createCrystal = (crystal, callback) => {
   const { name, url } = crystal;
   const query = "INSERT INTO Crystal (name_Crystal, url_Crystal) VALUES (?, ?)";
@@ -107,6 +119,7 @@ const createCrystal = (crystal, callback) => {
   });
 };
 
+// Exportation des fonctions pour les rendre disponibles dans d'autres fichiers
 module.exports = {
   createPlayer,
   getPlayerById,
