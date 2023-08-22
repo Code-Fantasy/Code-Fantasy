@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kavivanar&display=swap"
+      rel="stylesheet"
+    />
+    <title>Map Selection</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="header-container">
+        <h1>Select your arena !</h1>
+      </div>
+      <div id="map-container">
+        <div
+          class="map-thumbnail"
+          style="background-image: url('./img/fe.png')"
+          onclick="changeBackground('./img/fe.png')"
+        ></div>
+        <div
+          class="map-thumbnail"
+          style="background-image: url('./img/fen.png')"
+          onclick="changeBackground('./img/fen.png')"
+        ></div>
+        <div
+          class="map-thumbnail"
+          style="background-image: url('./img/fel.png')"
+          onclick="changeBackground('./img/fel.png')"
+        ></div>
+        <div
+          class="map-thumbnail"
+          style="background-image: url('./img/fef.png')"
+          onclick="changeBackground('./img/fef.png')"
+        ></div>
+      </div>
+      <div id="start-button" onclick="startFight()">
+        <h2>Start the fight !</h2>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
