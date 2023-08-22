@@ -16,14 +16,15 @@ conn.connect((err) => {
 });
 
 // Fonction pour créer un joueur dans la base de données
-const createPlayer = (player, callback) => {
-  const { name } = player;
-  const query = "INSERT INTO Player (name) VALUES (?)";
-  conn.query(query, [name], (err, result) => {
+const createPlayer = (req, res) => {
+  const { name_Player } = req.body;
+  const query = "INSERT INTO player (name_Player) VALUES (?)";
+  conn.query(query, [name_Player], (err, result) => {
     if (err) {
-      callback(err, null);
+      console.error("erreur");
+      res.status(500).json({ error: "erreur" });
     } else {
-      callback(null, result.insertId);
+      res.status(200).json({ message: "utilisateur enregistré" });
     }
   });
 };
@@ -42,15 +43,44 @@ const getPlayerById = (playerId, callback) => {
 
 // Fonction pour créer son perso dans la base de données
 const createJob = (job, callback) => {
-  const { stats, HP, attack, dodge, skills, slash, protera, strike, firaga, curaga, url } = job;
-  const query = "INSERT INTO Jobs (stats, HP, attack, dodge, skills, slash, protera, strike, firaga, curaga, url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-  conn.query(query, [stats, HP, attack, dodge, skills, slash, protera, strike, firaga, curaga, url], (err, result) => {
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, result.insertId);
+  const {
+    stats,
+    HP,
+    attack,
+    dodge,
+    skills,
+    slash,
+    protera,
+    strike,
+    firaga,
+    curaga,
+    url,
+  } = job;
+  const query =
+    "INSERT INTO Jobs (stats, HP, attack, dodge, skills, slash, protera, strike, firaga, curaga, url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  conn.query(
+    query,
+    [
+      stats,
+      HP,
+      attack,
+      dodge,
+      skills,
+      slash,
+      protera,
+      strike,
+      firaga,
+      curaga,
+      url,
+    ],
+    (err, result) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, result.insertId);
+      }
     }
-  });
+  );
 };
 
 // Fonction pour choisir son arène
@@ -69,7 +99,8 @@ const createStage = (stage, callback) => {
 //Fonction pour choisir la musique
 const createSound = (sound, callback) => {
   const { battleTheme, victoryTheme, menuTheme } = sound;
-  const query = "INSERT INTO Sound (battleTheme, victoryTheme, menuTheme) VALUES (?, ?, ?)";
+  const query =
+    "INSERT INTO Sound (battleTheme, victoryTheme, menuTheme) VALUES (?, ?, ?)";
   conn.query(query, [battleTheme, victoryTheme, menuTheme], (err, result) => {
     if (err) {
       callback(err, null);
@@ -91,7 +122,6 @@ const createXP = (xp, callback) => {
     }
   });
 };
-
 
 //Fonction pour choisir son équipe
 const createTeam = (team, callback) => {
