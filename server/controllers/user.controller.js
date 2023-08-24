@@ -112,10 +112,9 @@ const createXP = (req, res) => {
 
 // Fonction pour choisir son équipe
 const createTeam = (req, res) => {
-  const team = req.body;
-  const { name } = team;
-  const query = "INSERT INTO Teams (name_Teams) VALUES (?)";
-  conn.query(query, [name], (err, result) => {
+  const { name_Teams } = req.body;
+  const query = "INSERT INTO teams (name_Teams) VALUES (?)";
+  conn.query(query, [name_Teams], (err, result) => {
     if (err) {
       console.error("Error creating team:", err);
       res.status(500).json({ error: "Erreur lors de la création de l'équipe" });
