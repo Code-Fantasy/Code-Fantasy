@@ -4,7 +4,7 @@
 }
 
 #body-team {
-  background-image: url(bluebg.jpg);
+  background-image: url(image/bluebg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
  }
@@ -68,3 +68,26 @@
     justify-content: space-between;
     margin: 40px;
   }
+
+  .crystal {
+    display: inline-block;
+    margin: 0 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.dull img {
+    display: block;
+}
+
+.color img {
+    display: none;
+}
+
+.crystal.active .dull img {
+    display: none;
+}
+
+.crystal.active .color img {
+    display: block;
+}
