@@ -96,7 +96,6 @@ const createSound = (req, res) => {
 
 // Fonction pour gérer l'xp
 const createXP = (req, res) => {
-  
   const { value_XP } = req.body;
   const query = "INSERT INTO xp (value_XP) VALUES (?)";
   conn.query(query, [value_XP], (err, result) => {
@@ -126,10 +125,9 @@ const createTeam = (req, res) => {
 
 // Fonction pour gérer les crystaux
 const createCrystal = (req, res) => {
-  const crystal = req.body;
-  const { name, url } = crystal;
+  const { name_Crystal, url_Crystal } = req.body;
   const query = "INSERT INTO Crystal (name_Crystal, url_Crystal) VALUES (?, ?)";
-  conn.query(query, [name, url], (err, result) => {
+  conn.query(query, [name_Crystal, url_Crystal], (err, result) => {
     if (err) {
       console.error("Error creating crystal:", err);
       res.status(500).json({ error: "Erreur lors de la création du cristal" });
