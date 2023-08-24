@@ -18,6 +18,8 @@ conn.connect((err) => {
   console.log("Connected to the database");
 });
 
+
+
 // Fonction pour créer un joueur dans la base de données
 const createPlayer = (req, res) => {
   const { name_Player } = req.body;
@@ -33,111 +35,121 @@ const createPlayer = (req, res) => {
 };
 
 // Fonction pour obtenir un joueur par son ID
-const getPlayerById = (playerId, callback) => {
-  const query = "SELECT * FROM player WHERE idPlayer_Player = ?";
-  conn.query(query, [playerId], (err, rows) => {
+const getPlayerById = (req, res) => {
+  const playerId = req.params.id;
+   const query = `SELECT * FROM player WHERE idPlayer_Player = ${playerId}`;
+  conn.query(query, (err, rows) => {
     if (err) {
       console.error("Error fetching player by ID:", err);
-      callback(err, null);
+      res.status(500).json({ error: "Erreur lors de la récupération du joueur par ID" });
     } else {
-      callback(null, rows[0]);
+      res.status(200).json(rows[0]);
     }
   });
 };
 
 // Fonction pour créer son perso dans la base de données
-const createJob = (job, callback) => {
-  const { stats, HP, attack, dodge, skills, slash, protera, strike, firaga, curaga, url } = job;
-  const query = "INSERT INTO Jobs (stats, HP, attack, dodge, skills, slash, protera, strike, firaga, curaga, url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-  conn.query(query, [stats, HP, attack, dodge, skills, slash, protera, strike, firaga, curaga, url], (err, result) => {
+const createJob = (req, res) => {
+  const job = req.body;
+  const { stats_Jobs, HP_Jobs, attack_Jobs, dodge_Jobs, skills_Jobs, slash_Jobs, protera_Jobs, strike_Jobs, firaga_Jobs, curaga_Jobs, url_Jobs } = job;
+  const query = "INSERT INTO Jobs (stats_Jobs, HP_Jobs, attack_Jobs, dodge_Jobs, skills_Jobs, slash_Jobs, protera_Jobs, strike_Jobs, firaga_Jobs, curaga_Jobs, url_Jobs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  conn.query(query, [stats_Jobs, HP_Jobs, attack_Jobs, dodge_Jobs, skills_Jobs, slash_Jobs, protera_Jobs, strike_Jobs, firaga_Jobs, curaga_Jobs, url_Jobs], (err, result) => {
     if (err) {
       console.error("Error creating job:", err);
-      callback(err, null);
+      res.status(500).json({ error: "Erreur lors de la création de l'emploi" });
     } else {
-      callback(null, result.insertId);
+      res.status(201).json({ message: "Emploi créé avec succès", jobId: result.insertId });
     }
   });
 };
 
 // Fonction pour choisir son arène
-const createStage = (stage, callback) => {
-  const { url } = stage;
-  const query = "INSERT INTO Stage (url) VALUES (?)";
-  conn.query(query, [url], (err, result) => {
+const createStage = (req, res) => {
+  const stage = req.body;
+  const { url_Stage } = stage;
+  const query = "INSERT INTO Stage (url_Stage) VALUES (?)";
+  conn.query(query, [url_Stage], (err, result) => {
     if (err) {
       console.error("Error creating stage:", err);
-      callback(err, null);
+      res.status(500).json({ error: "Erreur lors de la création de l'arène" });
     } else {
-      callback(null, result.insertId);
+      res.status(201).json({ message: "Arène créée avec succès", stageId: result.insertId });
     }
   });
 };
 
-//Fonction pour choisir la musique
-const createSound = (sound, callback) => {
-  const { battleTheme, victoryTheme, menuTheme } = sound;
-  const query = "INSERT INTO Sound (battleTheme, victoryTheme, menuTheme) VALUES (?, ?, ?)";
-  conn.query(query, [battleTheme, victoryTheme, menuTheme], (err, result) => {
+// Fonction pour choisir la musique
+const createSound = (req, res) => {
+  const sound = req.body;
+  const { battleTheme_Sound, victoryTheme_Sound, menuTheme_Sound } = sound;
+  const query = "INSERT INTO Sound (battleTheme_Sound, victoryTheme_Sound, menuTheme_Sound) VALUES (?, ?, ?)";
+  conn.query(query, [battleTheme_Sound, victoryTheme_Sound, menuTheme_Sound], (err, result) => {
     if (err) {
       console.error("Error creating sound:", err);
-      callback(err, null);
+      res.status(500).json({ error: "Erreur lors de la création du son" });
     } else {
-      callback(null, result.insertId);
+      res.status(201).json({ message: "Son créé avec succès", soundId: result.insertId });
     }
   });
 };
 
-//Fonction pour gérer l'xp
-const createXP = (xp, callback) => {
-  const { value } = xp;
-  const query = "INSERT INTO XP (value_XP) VALUES (?)";
-  conn.query(query, [value], (err, result) => {
+
+// Fonction pour gérer l'xp
+const createXP = (req, res) => {
+  
+  const { value_XP } = req.body;
+  const query = "INSERT INTO xp (value_XP) VALUES (?)";
+  conn.query(query, [value_XP], (err, result) => {
     if (err) {
       console.error("Error creating XP:", err);
-      callback(err, null);
+      res.status(500).json({ error: "Erreur lors de la création de l'XP" });
     } else {
-      callback(null, result.insertId);
+      res.status(201).json({ message: "XP créée avec succès", xpId: result.insertId });
     }
   });
 };
 
-//Fonction pour choisir son équipe
-const createTeam = (team, callback) => {
+
+// Fonction pour choisir son équipe
+const createTeam = (req, res) => {
+  const team = req.body;
   const { name } = team;
   const query = "INSERT INTO Teams (name_Teams) VALUES (?)";
   conn.query(query, [name], (err, result) => {
     if (err) {
       console.error("Error creating team:", err);
-      callback(err, null);
+      res.status(500).json({ error: "Erreur lors de la création de l'équipe" });
     } else {
-      callback(null, result.insertId);
+      res.status(201).json({ message: "Équipe créée avec succès", teamId: result.insertId });
     }
   });
 };
 
-//Fonction pour gérer les crystaux
-const createCrystal = (crystal, callback) => {
+// Fonction pour gérer les crystaux
+const createCrystal = (req, res) => {
+  const crystal = req.body;
   const { name, url } = crystal;
   const query = "INSERT INTO Crystal (name_Crystal, url_Crystal) VALUES (?, ?)";
   conn.query(query, [name, url], (err, result) => {
     if (err) {
       console.error("Error creating crystal:", err);
-      callback(err, null);
+      res.status(500).json({ error: "Erreur lors de la création du cristal" });
     } else {
-      callback(null, result.insertId);
+      res.status(201).json({ message: "Cristal créé avec succès", crystalId: result.insertId });
     }
   });
 };
 
 // Fonction pour supprimer un utilisateur par son ID
-const deleteUserById = (userId, callback) => {
-  const query = "DELETE FROM Player WHERE idPlayer = ?";
+const deleteUserById = (req, res) => {
+  const userId = req.params.id;
+  const query = "DELETE FROM player WHERE idPlayer_Player = ?";
   conn.query(query, [userId], (err, result) => {
     if (err) {
       console.error("Error deleting user:", err);
-      callback(err);
+      res.status(500).json({ error: "Erreur lors de la suppression de l'utilisateur" });
     } else {
-      callback(null);
+      res.status(200).json({ message: "Utilisateur supprimé avec succès" });
     }
   });
 };
@@ -154,3 +166,4 @@ module.exports = {
   createCrystal,
   deleteUserById,
 };
+
