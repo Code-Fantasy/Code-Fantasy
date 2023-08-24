@@ -63,6 +63,21 @@ const createJob = (req, res) => {
   });
 };
 
+
+// Fonction pour assigner un emploi à un joueur
+const assignJobToPlayer = (req, res) => {
+  const { idPlayer_Player, idJobs_Jobs } = req.body;
+  const query = "INSERT INTO playerjobs (idPlayer_Player, idJobs_Jobs) VALUES (?, ?)";
+  conn.query(query, [idPlayer_Player, idJobs_Jobs], (err, result) => {
+    if (err) {
+      console.error("Error assigning job to player:", err);
+      res.status(500).json({ error: "Erreur lors de l'assignation de l'emploi au joueur" });
+    } else {
+      res.status(201).json({ message: "Emploi assigné au joueur avec succès" });
+    }
+  });
+};
+
 // Fonction pour choisir son arène
 const createStage = (req, res) => {
   const stage = req.body;
@@ -78,6 +93,20 @@ const createStage = (req, res) => {
   });
 };
 
+// Fonction pour assigner un joueur à une arène
+const assignPlayerToStage = (req, res) => {
+  const { playerId, stageId } = req.body;
+  const query = "INSERT INTO playerstage (idPlayer_Player, idStage_Stage) VALUES (?, ?)";
+  conn.query(query, [playerId, stageId], (err, result) => {
+    if (err) {
+      console.error("Error assigning player to stage:", err);
+      res.status(500).json({ error: "Erreur lors de l'assignation du joueur à l'arène" });
+    } else {
+      res.status(201).json({ message: "Joueur assigné à l'arène avec succès" });
+    }
+  });
+};
+
 // Fonction pour choisir la musique
 const createSound = (req, res) => {
   const sound = req.body;
@@ -89,6 +118,20 @@ const createSound = (req, res) => {
       res.status(500).json({ error: "Erreur lors de la création du son" });
     } else {
       res.status(201).json({ message: "Son créé avec succès", soundId: result.insertId });
+    }
+  });
+};
+
+// Fonction pour assigner un son à un stage
+const assignSoundToStage = (req, res) => {
+  const { soundId, stageId } = req.body;
+  const query = "INSERT INTO soundstage (idSound_Sound, idStage_Stage) VALUES (?, ?)";
+  conn.query(query, [soundId, stageId], (err, result) => {
+    if (err) {
+      console.error("Error assigning sound to stage:", err);
+      res.status(500).json({ error: "Erreur lors de l'assignation du son à la scène" });
+    } else {
+      res.status(201).json({ message: "Son assigné à la scène avec succès" });
     }
   });
 };
@@ -119,6 +162,20 @@ const createTeam = (req, res) => {
       res.status(500).json({ error: "Erreur lors de la création de l'équipe" });
     } else {
       res.status(201).json({ message: "Équipe créée avec succès", teamId: result.insertId });
+    }
+  });
+};
+
+// Fonction pour assigner un joueur à une équipe
+const assignPlayerToTeam = (req, res) => {
+  const { playerId, teamId } = req.body;
+  const query = "INSERT INTO teamplayers (idPlayer_Player, idTeams_Teams) VALUES (?, ?)";
+  conn.query(query, [playerId, teamId], (err, result) => {
+    if (err) {
+      console.error("Error assigning player to team:", err);
+      res.status(500).json({ error: "Erreur lors de l'assignation du joueur à l'équipe" });
+    } else {
+      res.status(201).json({ message: "Joueur assigné à l'équipe avec succès" });
     }
   });
 };
@@ -156,10 +213,14 @@ module.exports = {
   createPlayer,
   getPlayerById,
   createJob,
+  assignJobToPlayer,
   createStage,
+  assignPlayerToStage,
   createSound,
+  assignSoundToStage,
   createXP,
   createTeam,
+  assignPlayerToTeam,
   createCrystal,
   deleteUserById,
 };
