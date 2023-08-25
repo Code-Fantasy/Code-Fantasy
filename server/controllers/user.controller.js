@@ -237,6 +237,37 @@ const deleteUserById = (req, res) => {
   });
 };
 
+// Supprimer l'association entre une équipe et un job
+const removeTeamFromJob = (req, res) => {
+  const { idTeams_Teams, idJobs_Jobs } = req.body;
+  const query = "DELETE FROM teamjobs WHERE idTeams_Teams = ? AND idJobs_Jobs = ?";
+  conn.query(query, [idTeams_Teams, idJobs_Jobs], (err, result) => {
+    if (err) {
+      console.error("Error removing team from job:", err);
+      res.status(500).json({ error: "Erreur lors de la suppression de l'association équipe-emploi" });
+    } else {
+      res.status(200).json({ message: "Association équipe-emploi supprimée avec succès" });
+    }
+  });
+};
+
+// Supprimer l'association entre les joueurs et une map
+const removePlayersFromStage = (req, res) => {
+  const { idStage_Stage, idPlayer_Player } = req.body;
+  const query = "DELETE FROM playerstage WHERE idStage_Stage = ? AND idPlayer_Player = ?";
+  conn.query(query, [idStage_Stage, idPlayer_Player], (err, result) => {
+    if (err) {
+      console.error("Error removing team from job:", err);
+      res.status(500).json({ error: "Erreur lors de la suppression de l'association joueur-stage" });
+    } else {
+      res.status(200).json({ message: "Association joueur-stage supprimée avec succès" });
+    }
+  });
+};
+
+
+
+
 // Exportation des fonctions pour les rendre disponibles dans d'autres fichiers
 module.exports = {
   createPlayer,
@@ -254,5 +285,7 @@ module.exports = {
   createCrystal,
   assignCrystalToJobs,
   deleteUserById,
+  removeTeamFromJob,
+  removePlayersFromStage,
 };
 

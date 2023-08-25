@@ -46,5 +46,11 @@ router.post("/sound/assign-to-stage", userController.assignSoundToStage);
 // Assigner l'xp aux jobs
 router.post("/xp/assign-to-jobs", userController.assignXpToJobs);
 
+// Supprimer l'association entre une équipe et un job
+router.delete("/teams/remove-from-job", userController.removeTeamFromJob);
+
+// Supprimer l'association entre un joueur et un stage
+router.delete("/player/remove-from-stage", userController.removePlayersFromStage);
+
 
 module.exports = router;
