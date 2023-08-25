@@ -76,7 +76,7 @@
     flex-direction: row;
     align-items: center;
     width: 48%; /* Each section takes up about half of the line */
-    margin: 10px; /* Adjust the margin for spacing */
+    margin: 10  px; /* Adjust the margin for spacing */
   }
   
   .crystal {
@@ -84,7 +84,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 5px; /* Adjust the margin to make the images closer */
+    margin: 20px; /* Adjust the margin to make the images closer */
   }
   
   /* Other existing styles... */
