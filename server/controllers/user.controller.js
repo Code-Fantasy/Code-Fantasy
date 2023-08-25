@@ -265,9 +265,6 @@ const removePlayersFromStage = (req, res) => {
   });
 };
 
-
-
-
 // Exportation des fonctions pour les rendre disponibles dans d'autres fichiers
 module.exports = {
   createPlayer,
