@@ -16,7 +16,10 @@ function defaut() {
 
 function showdiv(){
   document.getElementById("image").style.visibility="visible";
+  
 }
+
+
 
 setTimeout("showdiv()", 2000)
 
