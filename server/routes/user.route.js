@@ -35,7 +35,7 @@ router.post("/job/assign-to-player", userController.assignJobToPlayer);
 router.post ("/crystal/assign-to-jobs", userController.assignCrystalToJobs);
 
 // Assigner une team à un job
-router.post ("/teams/assign-to-jobs", userController.assignTeamsToJobs);
+router.post ("/teams/assign-to-player", userController.assignTeamsToPlayers);
 
 // Assigner un joueur à une arène (scène)
 router.post("/player/assign-to-stage", userController.assignPlayerToStage);

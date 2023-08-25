@@ -181,11 +181,11 @@ const createTeam = (req, res) => {
   });
 };
 
-// Fonction pour assigner une team à un job
-const assignTeamsToJobs = (req, res) => {
-  const { idTeams_Teams, idJobs_Jobs } = req.body;
-  const query = "INSERT INTO teamjobs (idTeams_Teams, idJobs_Jobs) VALUES (?, ?)";
-  conn.query(query, [idTeams_Teams, idJobs_Jobs], (err, result) => {
+// Fonction pour assigner une team à un joueur
+const assignTeamsToPlayers = (req, res) => {
+  const { idTeams_Teams, idPlayer_Player } = req.body;
+  const query = "INSERT INTO teamplayer (idTeams_Teams, idPlayer_Player) VALUES (?, ?)";
+  conn.query(query, [idTeams_Teams, idPlayer_Player], (err, result) => {
     if (err) {
       console.error("Error assigning player to team:", err);
       res.status(500).json({ error: "Erreur lors de l'assignation du joueur à l'équipe" });
@@ -278,7 +278,7 @@ module.exports = {
   createXP,
   assignXpToJobs,
   createTeam,
-  assignTeamsToJobs,
+  assignTeamsToPlayers,
   createCrystal,
   assignCrystalToJobs,
   deleteUserById,
