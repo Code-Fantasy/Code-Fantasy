@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+width: 100%;
+}
+
+#image {
+    -webkit-animation: fade-in 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+
+.scale-in-center {
+	-webkit-animation: scale-in-center 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: scale-in-center 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+#playercreation {
+  display: flex;
+}
+
+
+  p{
+    display: flex;
+  }
+
+  @-webkit-keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+
+
+
+
+#startkey {
+    -webkit-animation: fade-in 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in2 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation-duration: 1.5s;
+    animation-name: clignoter;
+    animation-iteration-count: infinite;
+    transition: none;
+    font-family: 'Lobster Two', cursive;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+@-webkit-keyframes fade-in2 {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in2 {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+
+
+ 
+ @keyframes clignoter {
+   0%   { opacity:1; }
+   40%   {opacity:0; }
+   100% { opacity:1; }
+ } 
+
+
+ #body1 {
+  background-image: url('bluebg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+ }
+
+ #inputchara {
+  width: 243px;
+  height: 56px; 
+  background-color: rgb(193, 192, 215);  
+  font-family: 'Grenze', serif;
+  font-size: 30px;
+  text-align: center;
+ }
+
+h1 {
+  text-align: center;
+  padding: 40px;
+  font-family: 'Grenze', serif;
+  font-size: 50px;
+  color: #0E1644;
+}
+
+
+.jobs
+ {
+  width: 176px;
+  cursor: pointer;
+}
+
+.jobs2
+ {
+  width: 176px;
+  margin-bottom: 50px;
+  margin-left: 31px;
+}
+
+.jobdescription {
+  width: 240px; 
+  height: 33px; 
+  color: black; 
+  font-size: 25px; 
+  font-family: Kavivanar; 
+  font-weight: 400; 
+  margin-bottom: 60px;
+  margin-left: 23px;
+  text-align: center;
+}
+
+#characters {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 25px;
+}
+
+.classpics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;}
+
+#createbtn {
+  width: 170px; 
+  background: linear-gradient(180deg, #2B238C 9%, rgba(8.29, 5.24, 43.35, 0) 100%); 
+  border-radius: 13px; 
+  border: 1.50px #FBFBFF solid; 
+  color: white; 
+  height: 54px; 
+  font-size: 36px;
+  font-family: 'Grenze', serif;
+  font-weight: 500; 
+  word-wrap: break-word;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#characreate {
+  margin-right: 64px;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
