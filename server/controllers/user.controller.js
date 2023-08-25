@@ -95,9 +95,9 @@ const createStage = (req, res) => {
 
 // Fonction pour assigner un joueur à une arène
 const assignPlayerToStage = (req, res) => {
-  const { playerId, stageId } = req.body;
+  const { idPlayer_Player, idStage_Stage } = req.body;
   const query = "INSERT INTO playerstage (idPlayer_Player, idStage_Stage) VALUES (?, ?)";
-  conn.query(query, [playerId, stageId], (err, result) => {
+  conn.query(query, [idPlayer_Player, idStage_Stage], (err, result) => {
     if (err) {
       console.error("Error assigning player to stage:", err);
       res.status(500).json({ error: "Erreur lors de l'assignation du joueur à l'arène" });
@@ -106,6 +106,7 @@ const assignPlayerToStage = (req, res) => {
     }
   });
 };
+
 
 // Fonction pour choisir la musique
 const createSound = (req, res) => {
@@ -124,9 +125,9 @@ const createSound = (req, res) => {
 
 // Fonction pour assigner un son à un stage
 const assignSoundToStage = (req, res) => {
-  const { soundId, stageId } = req.body;
+  const { idSound_Sound, idStage_Stage } = req.body;
   const query = "INSERT INTO soundstage (idSound_Sound, idStage_Stage) VALUES (?, ?)";
-  conn.query(query, [soundId, stageId], (err, result) => {
+  conn.query(query, [idSound_Sound, idStage_Stage], (err, result) => {
     if (err) {
       console.error("Error assigning sound to stage:", err);
       res.status(500).json({ error: "Erreur lors de l'assignation du son à la scène" });
@@ -151,6 +152,20 @@ const createXP = (req, res) => {
   });
 };
 
+// Fonction pour assigner de l'xp au job
+const assignXpToJobs = (req, res) => {
+  const { idXP_XP, idJobs_Jobs } = req.body;
+  const query = "INSERT INTO xpjobs (idXP_XP, idJobs_Jobs) VALUES (?, ?)";
+  conn.query(query, [idXP_XP, idJobs_Jobs], (err, result) => {
+    if(err) {
+      console.error("Error assigning xp to jobs:", err);
+      res.status(500).json({ error: "Erreur lors de l' assignation de l'xp au jobs" });
+    } else {
+      res.status(201).json({ message: "XP assigné aux jobs avec succès" });
+    }
+  })
+}
+
 
 // Fonction pour choisir son équipe
 const createTeam = (req, res) => {
@@ -166,11 +181,11 @@ const createTeam = (req, res) => {
   });
 };
 
-// Fonction pour assigner un joueur à une équipe
-const assignPlayerToTeam = (req, res) => {
-  const { playerId, teamId } = req.body;
-  const query = "INSERT INTO teamplayers (idPlayer_Player, idTeams_Teams) VALUES (?, ?)";
-  conn.query(query, [playerId, teamId], (err, result) => {
+// Fonction pour assigner une team à un job
+const assignTeamsToJobs = (req, res) => {
+  const { idTeams_Teams, idJobs_Jobs } = req.body;
+  const query = "INSERT INTO teamjobs (idTeams_Teams, idJobs_Jobs) VALUES (?, ?)";
+  conn.query(query, [idTeams_Teams, idJobs_Jobs], (err, result) => {
     if (err) {
       console.error("Error assigning player to team:", err);
       res.status(500).json({ error: "Erreur lors de l'assignation du joueur à l'équipe" });
@@ -192,6 +207,20 @@ const createCrystal = (req, res) => {
       res.status(201).json({ message: "Cristal créé avec succès", crystalId: result.insertId });
     }
   });
+};
+
+// Fonction pour assigner un crystal à un jobs
+const assignCrystalToJobs = (req, res) => {
+  const { idCrystal_Crystal, idJobs_Jobs } = req.body;
+  const query = "INSERT INTO crystaljobs (idCrystal_Crystal, idJobs_Jobs) VALUES (?, ?)";
+  conn.query(query, [idCrystal_Crystal, idJobs_Jobs], (err, result) => {
+    if (err) {
+      console.error("Error assigning crystal to jobs:", err);
+      res.status(500).json({ error: "Erreur lors de l'assignation du crystal à une équipe" });
+      } else {
+      res.status(201).json({ message: "Crystal assigné à l'équipe avec succès" });
+    }
+});
 };
 
 // Fonction pour supprimer un utilisateur par son ID
@@ -219,9 +248,11 @@ module.exports = {
   createSound,
   assignSoundToStage,
   createXP,
+  assignXpToJobs,
   createTeam,
-  assignPlayerToTeam,
+  assignTeamsToJobs,
   createCrystal,
+  assignCrystalToJobs,
   deleteUserById,
 };
 

@@ -31,14 +31,20 @@ router.delete("/job/:id", userController.deleteUserById);
 // Assigner un emploi à un joueur
 router.post("/job/assign-to-player", userController.assignJobToPlayer);
 
-// Assigner un joueur à une équipe
-router.post("/player/assign-to-team", userController.assignPlayerToTeam);
+// Assigner un crystal à un job
+router.post ("/crystal/assign-to-jobs", userController.assignCrystalToJobs);
+
+// Assigner une team à un job
+router.post ("/teams/assign-to-jobs", userController.assignTeamsToJobs);
 
 // Assigner un joueur à une arène (scène)
 router.post("/player/assign-to-stage", userController.assignPlayerToStage);
 
 // Assigner un son à une scène
 router.post("/sound/assign-to-stage", userController.assignSoundToStage);
+
+// Assigner l'xp aux jobs
+router.post("/xp/assign-to-jobs", userController.assignXpToJobs);
 
 
 module.exports = router;
