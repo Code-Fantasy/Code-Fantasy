@@ -32,10 +32,10 @@ router.delete("/job/:id", userController.deleteUserById);
 router.post("/job/assign-to-player", userController.assignJobToPlayer);
 
 // Assigner un crystal à un job
-router.post ("/crystal/assign-to-jobs", userController.assignCrystalToJobs);
+router.post("/crystal/assign-to-jobs", userController.assignCrystalToJobs);
 
 // Assigner une team à un job
-router.post ("/teams/assign-to-player", userController.assignTeamsToPlayers);
+router.post("/teams/assign-to-player", userController.assignTeamsToPlayers);
 
 // Assigner un joueur à une arène (scène)
 router.post("/player/assign-to-stage", userController.assignPlayerToStage);
@@ -50,7 +50,9 @@ router.post("/xp/assign-to-jobs", userController.assignXpToJobs);
 router.delete("/teams/remove-from-job", userController.removeTeamFromJob);
 
 // Supprimer l'association entre un joueur et un stage
-router.delete("/player/remove-from-stage", userController.removePlayersFromStage);
-
+router.delete(
+  "/player/remove-from-stage",
+  userController.removePlayersFromStage
+);
 
 module.exports = router;
