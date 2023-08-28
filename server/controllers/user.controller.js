@@ -276,9 +276,9 @@ const assignTeamsToPlayers = (req, res) => {
 
 // Fonction pour gérer les crystaux
 const createCrystal = (req, res) => {
-  const { name_Crystal, url_Crystal } = req.body;
-  const query = "INSERT INTO Crystal (name_Crystal, url_Crystal) VALUES (?, ?)";
-  conn.query(query, [name_Crystal, url_Crystal], (err, result) => {
+  const { name_Crystal, stats_Crystal, url_Crystal } = req.body;
+  const query = "INSERT INTO Crystal (name_Crystal, stats_Crystal, url_Crystal) VALUES (?, ?, ?)";
+  conn.query(query, [name_Crystal, stats_Crystal, url_Crystal], (err, result) => {
     if (err) {
       console.error("Error creating crystal:", err);
       res.status(500).json({ error: "Erreur lors de la création du cristal" });

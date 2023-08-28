@@ -3,20 +3,19 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+--
+-- Structure de la table `crystal`
+--
+
 DROP TABLE IF EXISTS `crystal`;
 CREATE TABLE IF NOT EXISTS `crystal` (
   `idCrystal_Crystal` int NOT NULL AUTO_INCREMENT,
   `name_Crystal` varchar(255) DEFAULT NULL,
+  `stats_Crystal` int NOT NULL,
   `url_Crystal` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idCrystal_Crystal`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
---
--- Déchargement des données de la table `crystal`
---
-
-INSERT INTO `crystal` (`idCrystal_Crystal`, `name_Crystal`, `url_Crystal`) VALUES
-(2, 'rrr', 'rrr');
 
 -- --------------------------------------------------------
 
@@ -32,12 +31,6 @@ CREATE TABLE IF NOT EXISTS `crystalteams` (
   KEY `idTeams_Teams` (`idTeams_Teams`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
---
--- Déchargement des données de la table `crystaljobs`
---
-
-INSERT INTO `crystalteams` (`idCrystal_Crystal`, `idTeams_Teams`) VALUES
-(2, 1);
 
 -- --------------------------------------------------------
 
@@ -48,26 +41,20 @@ INSERT INTO `crystalteams` (`idCrystal_Crystal`, `idTeams_Teams`) VALUES
 DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE IF NOT EXISTS `jobs` (
   `idJobs_Jobs` int NOT NULL AUTO_INCREMENT,
-  `stats_Jobs` varchar(255) DEFAULT NULL,
-  `HP_Jobs` varchar(255) DEFAULT NULL,
-  `attack_Jobs` varchar(255) DEFAULT NULL,
-  `dodge_Jobs` varchar(255) DEFAULT NULL,
-  `skills_Jobs` varchar(255) DEFAULT NULL,
-  `slash_Jobs` varchar(255) DEFAULT NULL,
-  `protera_Jobs` varchar(255) DEFAULT NULL,
-  `strike_Jobs` varchar(255) DEFAULT NULL,
-  `firaga_Jobs` varchar(255) DEFAULT NULL,
-  `curaga_Jobs` varchar(255) DEFAULT NULL,
+  `stats_Jobs` int DEFAULT NULL,
+  `HP_Jobs` int DEFAULT NULL,
+  `attack_Jobs` int DEFAULT NULL,
+  `dodge_Jobs` int DEFAULT NULL,
+  `skills_Jobs` int DEFAULT NULL,
+  `slash_Jobs` int DEFAULT NULL,
+  `protera_Jobs` int DEFAULT NULL,
+  `strike_Jobs` int DEFAULT NULL,
+  `firaga_Jobs` int DEFAULT NULL,
+  `curaga_Jobs` int DEFAULT NULL,
   `url_Jobs` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idJobs_Jobs`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
---
--- Déchargement des données de la table `jobs`
---
-
-INSERT INTO `jobs` (`idJobs_Jobs`, `stats_Jobs`, `HP_Jobs`, `attack_Jobs`, `dodge_Jobs`, `skills_Jobs`, `slash_Jobs`, `protera_Jobs`, `strike_Jobs`, `firaga_Jobs`, `curaga_Jobs`, `url_Jobs`) VALUES
-(1, 'Théo', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -83,15 +70,6 @@ CREATE TABLE IF NOT EXISTS `player` (
   PRIMARY KEY (`idPlayer_Player`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
 
---
--- Déchargement des données de la table `player`
---
-
-INSERT INTO `player` (`idPlayer_Player`, `name_Player`, `level_Player`) VALUES
-(6, 'Maryam', NULL),
-(7, 'Renaud', NULL),
-(12, 'Alexis', NULL),
-(13, 'Théo', NULL);
 
 -- --------------------------------------------------------
 
@@ -106,13 +84,6 @@ CREATE TABLE IF NOT EXISTS `playerjobs` (
   PRIMARY KEY (`idPlayer_Player`,`idJobs_Jobs`),
   KEY `idJobs_Jobs` (`idJobs_Jobs`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Déchargement des données de la table `playerjobs`
---
-
-INSERT INTO `playerjobs` (`idPlayer_Player`, `idJobs_Jobs`) VALUES
-(6, 1);
 
 -- --------------------------------------------------------
 
@@ -144,13 +115,6 @@ CREATE TABLE IF NOT EXISTS `sound` (
   PRIMARY KEY (`idSound_Sound`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
---
--- Déchargement des données de la table `sound`
---
-
-INSERT INTO `sound` (`idSound_Sound`, `battleTheme_Sound`, `soundDesign_Sound`, `victoryTheme_Sound`, `menuTheme_Sound`) VALUES
-(1, 'rrr', NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -165,13 +129,6 @@ CREATE TABLE IF NOT EXISTS `soundstage` (
   KEY `idStage_Stage` (`idStage_Stage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
---
--- Déchargement des données de la table `soundstage`
---
-
-INSERT INTO `soundstage` (`idSound_Sound`, `idStage_Stage`) VALUES
-(1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -184,14 +141,6 @@ CREATE TABLE IF NOT EXISTS `stage` (
   `url_Stage` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idStage_Stage`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
-
---
--- Déchargement des données de la table `stage`
---
-
-INSERT INTO `stage` (`idStage_Stage`, `url_Stage`) VALUES
-(1, 'rrr');
-
 -- --------------------------------------------------------
 
 --
@@ -206,13 +155,6 @@ CREATE TABLE IF NOT EXISTS `teamplayer` (
   KEY `IdPlayer_Player` (`IdPlayer_Player`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
---
--- Déchargement des données de la table `teamplayer`
---
-
-INSERT INTO `teamplayer` (`idTeams_Teams`, `IdPlayer_Player`) VALUES
-(2, 6);
-
 -- --------------------------------------------------------
 
 --
@@ -225,14 +167,6 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `name_Teams` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idTeams_Teams`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
-
---
--- Déchargement des données de la table `teams`
---
-
-INSERT INTO `teams` (`idTeams_Teams`, `name_Teams`) VALUES
-(1, NULL),
-(2, 'rrr');
 
 -- --------------------------------------------------------
 
@@ -247,18 +181,6 @@ CREATE TABLE IF NOT EXISTS `xp` (
   PRIMARY KEY (`idXP_XP`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
---
--- Déchargement des données de la table `xp`
---
-
-INSERT INTO `xp` (`idXP_XP`, `value_XP`) VALUES
-(1, NULL),
-(2, NULL),
-(3, NULL),
-(4, NULL),
-(5, NULL),
-(6, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -272,13 +194,6 @@ CREATE TABLE IF NOT EXISTS `xpplayer` (
   PRIMARY KEY (`idXP_XP`,`idPlayer_Player`),
   KEY `idPlayer_Player` (`idPlayer_Player`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Déchargement des données de la table `xpjobs`
---
-
-INSERT INTO `xpplayer` (`idXP_XP`, `idPlayer_Player`) VALUES
-(6, 6);
 
 --
 -- Contraintes pour les tables déchargées
