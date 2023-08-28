@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+```html <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Grenze:wght@200&family=Lobster+Two&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz@10..48&family=Grenze:wght@200&family=Lobster+Two&display=swap" rel="stylesheet">
     <title>Player Creation</title>
 </head>
 <body id="body1">
@@ -20,20 +23,20 @@
 <div id="warrior" class="classpics">
 
     <p>Warrior</p>
-    <img class="jobs" id="warriorpic" src="warrior5.png" alt="warrior">
+    <img class="jobs" id="warriorpic" src="/client/image-home/warrior.png" alt="warrior">
 </div>
 
 
 <div id="thief" class="classpics">
 
     <p>Thief</p>
-    <img class="jobs" id="thiefpic" src="rogue3.png" alt="rogue">
+    <img class="jobs" id="thiefpic" src="/client/image-home/rogue.png" alt="rogue">
 </div>
 
 <div id="monk" class="classpics">
 
     <p>Monk</p>
-    <img class="jobs" id="monkpic" src="monk5.png" alt="monk">
+    <img class="jobs" id="monkpic" src="/client/image-home/monk.png" alt="monk">
 </div>
 
 
@@ -41,53 +44,51 @@
 <div id="blackmage" class="classpics">
 
     <p>Black Mage</p>
-    <img class="jobs" id="bmpic" src="bm.png" alt="blackmage">
+    <img class="jobs" id="bmpic" src="/client/image-home/black_mage.png" alt="blackmage">
 </div>
 
 <div id="whitemage" class="classpics">
 
     <p>White Mage</p>
-    <img class="jobs" id="wmpic" src="wm.png" alt="whitemage">
+    <img class="jobs" id="wmpic" src="/client/image-home/whitemage.png" alt="whitemage">
 </div>
 
 </div>
 
 <div id="characreate">
 
-    <div id="warriordiv">
-    <img class="jobs2" src="warrior5.png" alt="warrior">
+    <div id="warriordiv" class="desc">
+    <img class="jobs2" src="/client/image-home/war.png" alt="warrior">
 
     <p class="jobdescription">Highest team health <br>
         Protects and defends</p>
     </div>
 
 
-    <div id="thiefdiv">
-        <img class="jobs2" src="rogue4.png" alt="rogue">
+    <div id="thiefdiv" class="desc">
+        <img class="jobs2" src="/client/image-home/rogue.png" alt="rogue">
     
         <p class="jobdescription">Medium damage <br>
             Innate evasion bonus</p>
         </div>
 
 
-
-
-        <div id="monkdiv">
-            <img class="jobs2" src="monk5.png" alt="monk">
+        <div id="monkdiv" class="desc">
+            <img class="jobs2" src="/client/image-home/monk.png" alt="monk">
         
             <p class="jobdescription">Strong melee damage <br>
                 No abilities</p>
             </div>
 
-            <div id="bmdiv">
-                <img class="jobs2" src="bm.png" alt="black mage">
+            <div id="bmdiv" class="desc">
+                <img class="jobs2" src="/client/image-home/bm.png" alt="black mage">
             
                 <p class="jobdescription">Low health <br>
                     Casts powerful offensive magic</p>
                 </div>
 
-                <div id="wmdiv">
-                    <img class="jobs2" src="wm.png" alt="white mage">
+                <div id="wmdiv" class="desc">
+                    <img class="jobs2" src="/client/image-home/wm.png" alt="white mage">
                 
                     <p class="jobdescription">Low health and damage <br>
                         Casts powerful healing magic  </p>
@@ -96,14 +97,13 @@
 
     <input placeholder="Select Your name" id="inputchara" type="text">
 
-    <button id="createbtn"> Create </button>
+    <button id="createbtn" onclick="sound()"> Create </button>
+
+    <button id="nextbtn" onclick="nextsound()"> Next </button>
+
 </div>
-
-
     </div>
-
-
     <script src="script.js"></script>
 
 </body>
-</html>
+</html>```
