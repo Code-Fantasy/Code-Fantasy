@@ -1,31 +1,7 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1:3306
--- Généré le : ven. 25 août 2023 à 14:15
--- Version du serveur : 8.0.31
--- Version de PHP : 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données : `codefantasy`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `crystal`
---
 
 DROP TABLE IF EXISTS `crystal`;
 CREATE TABLE IF NOT EXISTS `crystal` (
@@ -224,9 +200,9 @@ INSERT INTO `stage` (`idStage_Stage`, `url_Stage`) VALUES
 DROP TABLE IF EXISTS `teamplayer`;
 CREATE TABLE IF NOT EXISTS `teamplayer` (
   `idTeams_Teams` int NOT NULL,
-  `IdPlayer_Player` int DEFAULT NULL,
-  PRIMARY KEY (`idTeams_Teams`),
-  KEY `team_ibfk_2` (`IdPlayer_Player`)
+  `IdPlayer_Player` int NOT NULL,
+  PRIMARY KEY (`idTeams_Teams`, `IdPlayer_Player`),
+  KEY `IdPlayer_Player` (`IdPlayer_Player`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
@@ -234,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `teamplayer` (
 --
 
 INSERT INTO `teamplayer` (`idTeams_Teams`, `IdPlayer_Player`) VALUES
-(2, NULL);
+(2, 6);
 
 -- --------------------------------------------------------
 
@@ -350,6 +326,4 @@ ALTER TABLE `xpjobs`
   ADD CONSTRAINT `xpjobs_ibfk_2` FOREIGN KEY (`idJobs_Jobs`) REFERENCES `jobs` (`idJobs_Jobs`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
