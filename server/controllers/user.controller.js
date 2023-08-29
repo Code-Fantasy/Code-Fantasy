@@ -73,33 +73,23 @@ const updatePlayer = (req, res) => {
 const createJob = (req, res) => {
   const job = req.body;
   const {
-    stats_Jobs,
+    name_Jobs,
     HP_Jobs,
     attack_Jobs,
     dodge_Jobs,
     skills_Jobs,
-    slash_Jobs,
-    protera_Jobs,
-    strike_Jobs,
-    firaga_Jobs,
-    curaga_Jobs,
     url_Jobs,
   } = job;
   const query =
-    "INSERT INTO Jobs (stats_Jobs, HP_Jobs, attack_Jobs, dodge_Jobs, skills_Jobs, slash_Jobs, protera_Jobs, strike_Jobs, firaga_Jobs, curaga_Jobs, url_Jobs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO Jobs (name_Jobs, HP_Jobs, attack_Jobs, dodge_Jobs, skills_Jobs, url_Jobs) VALUES (?, ?, ?, ?, ?, ?)";
   conn.query(
     query,
     [
-      stats_Jobs,
+      name_Jobs,
       HP_Jobs,
       attack_Jobs,
       dodge_Jobs,
       skills_Jobs,
-      slash_Jobs,
-      protera_Jobs,
-      strike_Jobs,
-      firaga_Jobs,
-      curaga_Jobs,
       url_Jobs,
     ],
     (err, result) => {

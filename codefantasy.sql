@@ -41,11 +41,12 @@ CREATE TABLE IF NOT EXISTS `crystalteams` (
 DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE IF NOT EXISTS `jobs` (
   `idJobs_Jobs` int NOT NULL AUTO_INCREMENT,
+  `name_Jobs` varchar(255) DEFAULT NULL,
   `stats_Jobs` int DEFAULT NULL,
   `HP_Jobs` int DEFAULT NULL,
   `attack_Jobs` int DEFAULT NULL,
   `dodge_Jobs` int DEFAULT NULL,
-  `skills_Jobs` int DEFAULT NULL,
+  `skills_Jobs` varchar(255) DEFAULT NULL,
   `slash_Jobs` int DEFAULT NULL,
   `protera_Jobs` int DEFAULT NULL,
   `strike_Jobs` int DEFAULT NULL,
