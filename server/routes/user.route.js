@@ -7,6 +7,9 @@ router.post("/register", userController.createPlayer);
 // Sélectionner un joueur grâce à son ID
 router.get("/player/:id", userController.getPlayerById);
 
+// Mettre à jour un joueur grâce à son ID
+router.put("/player/:id", userController.updatePlayer);
+
 // Créer un nouveau job (personnage)
 router.post("/job/create", userController.createJob);
 
@@ -32,10 +35,10 @@ router.delete("/job/:id", userController.deleteUserById);
 router.post("/job/assign-to-player", userController.assignJobToPlayer);
 
 // Assigner un crystal à un job
-router.post ("/crystal/assign-to-jobs", userController.assignCrystalToJobs);
+router.post("/crystal/assign-to-teams", userController.assignCrystalToTeams);
 
 // Assigner une team à un job
-router.post ("/teams/assign-to-jobs", userController.assignTeamsToJobs);
+router.post("/teams/assign-to-player", userController.assignTeamsToPlayers);
 
 // Assigner un joueur à une arène (scène)
 router.post("/player/assign-to-stage", userController.assignPlayerToStage);
@@ -44,13 +47,15 @@ router.post("/player/assign-to-stage", userController.assignPlayerToStage);
 router.post("/sound/assign-to-stage", userController.assignSoundToStage);
 
 // Assigner l'xp aux jobs
-router.post("/xp/assign-to-jobs", userController.assignXpToJobs);
+router.post("/xp/assign-to-player", userController.assignXpToPlayer);
 
 // Supprimer l'association entre une équipe et un job
 router.delete("/teams/remove-from-job", userController.removeTeamFromJob);
 
 // Supprimer l'association entre un joueur et un stage
-router.delete("/player/remove-from-stage", userController.removePlayersFromStage);
-
+router.delete(
+  "/player/remove-from-stage",
+  userController.removePlayersFromStage
+);
 
 module.exports = router;
