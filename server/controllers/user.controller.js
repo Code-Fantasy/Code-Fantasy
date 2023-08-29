@@ -107,6 +107,22 @@ const createJob = (req, res) => {
   );
 };
 
+//Fonction pour récuperer une classe par son id
+const getJobByid = (req, res) => {
+  const jobId = req.params.id;
+  const query = `SELECT * FROM jobs WHERE idJobs_Jobs = ${jobId}`;
+  conn.query(query, (err, rows) => {
+    if (err) {
+      console.error("Error fetching player by ID:", err);
+      res
+        .status(500)
+        .json({ error: "Erreur lors de la récupération du joueur par ID" });
+    } else {
+      res.status(200).json(rows[0]);
+    }
+  });
+}
+
 // Fonction pour assigner un emploi à un joueur
 const assignJobToPlayer = (req, res) => {
   const { idPlayer_Player, idJobs_Jobs } = req.body;
@@ -362,6 +378,7 @@ module.exports = {
   createJob,
   assignJobToPlayer,
   createStage,
+  getJobByid,
   assignPlayerToStage,
   createSound,
   assignSoundToStage,
