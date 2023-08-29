@@ -13,6 +13,9 @@ router.put("/player/:id", userController.updatePlayer);
 // Créer un nouveau job (personnage)
 router.post("/job/create", userController.createJob);
 
+// Séléctionner une classe grâce à son ID
+router.get("/job/:id", userController.getJobByid);
+
 // Créer un nouveau stage (scène)
 router.post("/stage/create", userController.createStage);
 
