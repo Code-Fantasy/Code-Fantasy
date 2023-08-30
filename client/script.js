@@ -74,7 +74,7 @@ const warriorDiv = document.getElementById("warrior");
 // Ajoutez un gestionnaire d'événements au clic sur la div
 warriorDiv.addEventListener("click", async () => {
   // Effectuez une requête à votre serveur pour obtenir les informations du job
-  const response = await fetch(`http://localhost:8000/job/1`); // Remplacez avec l'URL correcte de votre API
+  const response = await fetch(`http://localhost:8000/job/1`);
   const jobData = await response.json();
   console.log(jobData);
 });
@@ -83,7 +83,7 @@ const thiefDiv = document.getElementById("thief");
 // Ajoutez un gestionnaire d'événements au clic sur la div
 thiefDiv.addEventListener("click", async () => {
   // Effectuez une requête à votre serveur pour obtenir les informations du job
-  const response = await fetch(`http://localhost:8000/job/2`); // Remplacez avec l'URL correcte de votre API
+  const response = await fetch(`http://localhost:8000/job/2`);
   const jobData = await response.json();
   console.log(jobData);
 });
@@ -92,7 +92,7 @@ const monkDiv = document.getElementById("monk");
 // Ajoutez un gestionnaire d'événements au clic sur la div
 monkDiv.addEventListener("click", async () => {
   // Effectuez une requête à votre serveur pour obtenir les informations du job
-  const response = await fetch(`http://localhost:8000/job/3`); // Remplacez avec l'URL correcte de votre API
+  const response = await fetch(`http://localhost:8000/job/3`);
   const jobData = await response.json();
   console.log(jobData);
 });
@@ -101,7 +101,7 @@ const blackmageDiv = document.getElementById("blackmage");
 // Ajoutez un gestionnaire d'événements au clic sur la div
 blackmageDiv.addEventListener("click", async () => {
   // Effectuez une requête à votre serveur pour obtenir les informations du job
-  const response = await fetch(`http://localhost:8000/job/5`); // Remplacez avec l'URL correcte de votre API
+  const response = await fetch(`http://localhost:8000/job/5`);
   const jobData = await response.json();
   console.log(jobData);
 });
@@ -110,7 +110,7 @@ const whitemageDiv = document.getElementById("whitemage");
 // Ajoutez un gestionnaire d'événements au clic sur la div
 whitemageDiv.addEventListener("click", async () => {
   // Effectuez une requête à votre serveur pour obtenir les informations du job
-  const response = await fetch(`http://localhost:8000/job/4`); // Remplacez avec l'URL correcte de votre API
+  const response = await fetch(`http://localhost:8000/job/4`);
   const jobData = await response.json();
   console.log(jobData);
 });
