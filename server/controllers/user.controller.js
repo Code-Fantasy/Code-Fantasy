@@ -18,19 +18,25 @@ conn.connect((err) => {
   console.log("Connected to the database");
 });
 
-// Fonction pour créer un joueur dans la base de données
+
 const createPlayer = (req, res) => {
-  const { name_Player, level_Player } = req.body; // Ajout de level_Player
-  const query = "INSERT INTO player (name_Player, level_Player) VALUES (?, ?)"; // Inclusion de level_Player dans la requête
+  const { name_Player } = req.body; // Ne récupérez que le nom du joueur depuis le corps de la requête
+  const level_Player = 1; // Définissez le niveau du joueur à 1
+
+  const query = "INSERT INTO player (name_Player, level_Player) VALUES (?, ?)";
   conn.query(query, [name_Player, level_Player], (err, result) => {
     if (err) {
-      console.error("erreur");
-      res.status(500).json({ error: "erreur" });
+      console.error(err);
+      res.status(500).json({ error: "Erreur lors de l'insertion du joueur" });
     } else {
-      res.status(200).json({ message: "utilisateur enregistré" });
+      // Après l'insertion réussie, renvoyez l'ID du joueur dans la réponse
+      res.status(200).json({ idPlayer_Player: result.insertId, message: "Joueur enregistré avec succès !" });
     }
   });
 };
+
+
+
 
 // Fonction pour obtenir un joueur par son ID
 const getPlayerById = (req, res) => {

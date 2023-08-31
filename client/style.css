@@ -238,14 +238,30 @@ border-radius: 13px;
 border: 1.50px #FBFBFF solid; 
 color: white; 
 height: 54px; 
-font-size: 36px;
+font-size: 24px;
 font-family: 'Grenze', serif;
 font-weight: 500; 
 word-wrap: break-word;
 cursor: pointer;
 margin-top: 20px;
-
 }
+
+#createbtn1 {
+  width: 170px; 
+  background: linear-gradient(180deg, #2B238C 9%, rgba(8.29, 5.24, 43.35, 0) 100%); 
+  border-radius: 13px; 
+  border: 1.50px #FBFBFF solid; 
+  color: white; 
+  height: 54px; 
+  font-size: 22px;
+  font-family: 'Grenze', serif;
+  font-weight: 500; 
+  word-wrap: break-word;
+  cursor: pointer;
+  margin-top: 20px;
+  }
+
+
 
 #createbtn:hover {
 transition: 1000ms;
@@ -256,6 +272,17 @@ color: #374065;
 font-weight: bold;
 border: solid 2px rgb(255, 255, 255);
 }
+
+#createbtn1:hover {
+  transition: 1000ms;
+  /* padding: 10px 50px;  */
+  transform: translateX(-0px);
+  background-color: white;
+  color: #374065;
+  font-weight: bold;
+  border: solid 2px rgb(255, 255, 255);
+  }
+  
 
 #nextbtn:hover {
 transition: 1000ms;

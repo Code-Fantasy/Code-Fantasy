@@ -1,3 +1,5 @@
+// const { log } = require("console");
+
 window.onload = defaut();
 
 function defaut() {
@@ -9,10 +11,10 @@ function defaut() {
   wmdiv.style.display = "none";
 }
 
-function sound() {
-  var snd = new Audio("/clientmd/sounds/create.mp3"); //wav is also supported
-  snd.play(); //plays the sound
-}
+// function sound() {
+//   var snd = new Audio("/clientmd/sounds/create.mp3"); //wav is also supported
+//   snd.play(); //plays the sound
+// }
 
 function nextsound() {
   var snd = new Audio("/clientmd/sounds/next.mp3"); //wav is also supported
@@ -124,51 +126,65 @@ whitemageDiv.addEventListener("click", async () => {
   console.log(jobData);
 });
 
-function createPlayer() {
-  const playerName = document.getElementById("inputchara").value;
 
-  if (playerName.trim() === "") {
-    alert("Please enter a valid name.");
+
+
+let createdPlayerId = null; // Variable pour stocker l'ID du joueur créé
+
+
+const createPlayer = async () => {
+  try {
+    const playerName = document.getElementById("inputchara").value;
+
+    const response = await fetch("http://localhost:8000/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name_Player: playerName }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Server Response for Player Creation:", data); 
+      createdPlayerId = data.idPlayer_Player; // Stockez l'ID du joueur créé
+      console.log("Created player ID:", createdPlayerId);
+      alert("Player created successfully!");
+    } else {
+      alert("An error occurred while creating the player.");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+const assignJobToPlayer = async () => {
+  if (!selectedJobId) {
+    alert("Please select a job first.");
     return;
   }
 
-  const playerData = {
-    name_Player: playerName,
-    level_Player: 1,
-  };
+  if (!createdPlayerId) {
+    alert("Please create a player first.");
+    return;
+  }
 
-  fetch("/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(playerData),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      const playerId = data.playerId;
-      const playerJobData = {
-        idPlayer_Player: playerId,
-        idJobs_Jobs: selectedJobId, // Utilisez l'ID du job sélectionné
-      };
-
-      return fetch("/job/assign-to-player", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(playerJobData),
-      });
-    })
-    .then((response) => {
-      if (response.status === 201) {
-        alert("Player created successfully!");
-      } else {
-        alert("Error while creating player or assigning job.");
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      alert("An error occurred.");
+  try {
+    const response = await fetch("http://localhost:8000/job/assign-to-player", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ idPlayer_Player: createdPlayerId, idJobs_Jobs: selectedJobId }),
     });
-}
+
+    if (response.ok) {
+      alert("Job assigned to player successfully!");
+    } else {
+      alert("An error occurred while assigning the job.");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
