@@ -1,3 +1,17 @@
+const backbutton = document.getElementById('back-button')
+
+backbutton.addEventListener('click', () =>{
+  location.href = "playercreation.html";
+})
+
+const nextbtn = document.getElementById('next-button-team')
+
+nextbtn.addEventListener('click', () =>{
+  location.href = "map.html";
+})
+
+
+
 //section 1
 const waterdull = document.getElementById('waterdull');
 const earthdull = document.getElementById('earthdull');

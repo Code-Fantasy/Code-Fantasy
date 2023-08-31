@@ -4,13 +4,50 @@
 }
 
 #body-team {
-  background-image: url(image-team/bluebg.jpg);
+  background-image: url('image-team/bluebg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
  }
 
+ #centerdiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+.charapics {
+  width: 70px;
+}
+ 
+ /*#blue {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;  If you want dots under the hoverable text 
+}
+
+#blue .bluecrystal {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  position: absolute;
+  z-index: 1;
+}
+
+#blue:hover .bluecrystal {
+  visibility: visible;}
+*/
  .container {
     position: relative;
+    bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
 }
 
 #bloc {
@@ -36,6 +73,8 @@
     width: 124px;
     height: 515px;
     background: #A7CEDF;
+    display: flex;
+    
 }
 
 .team2-holder {
@@ -44,23 +83,61 @@
     background: #A7CEDF;
 }
 
-.back-button {
-    width: 173px;
-    height: 54px;
-    background-color: white;
-    font-size: 36px;
-    font-family: Kavivanar;
-    font-weight: 400;
+.crystal1 {
+width: 40px;
+}
+
+#left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+#right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+   h1 {
+    text-align: center;
+    padding-top: 50px;
+    font-family: 'Grenze', serif;
+    font-size: 50px;
+    color: #0E1644;
    }
 
-.next-button-team {
-    width: 173px;
-    height: 54px;
+
+   .btn:hover {
+    transition: 1000ms;
+    /* padding: 10px 50px;  */
+    transform: translateX(-0px);
     background-color: white;
-    font-size: 36px;
-    font-family: Kavivanar;
-    font-weight: 400;
-  }
+    color: #374065;
+    font-weight: bold;
+    border: solid 2px rgb(255, 255, 255);
+
+   }
+
+   .btn {
+    width: 170px; 
+background: linear-gradient(180deg, #2B238C 9%, rgba(8.29, 5.24, 43.35, 0) 100%); 
+border-radius: 13px; 
+border: 1.50px #FBFBFF solid; 
+color: white; 
+height: 54px; 
+font-size: 36px;
+font-family: 'Grenze', serif;
+font-weight: 500; 
+word-wrap: break-word;
+cursor: pointer;
+margin-top: 20px;
+   }
+
+
 
 
   #btn {
@@ -74,9 +151,10 @@
 .crystal-section {
     display: inline-flex; /* Use inline-flex to make sections side by side */
     flex-direction: row;
-    align-items: center;
     width: 48%; /* Each section takes up about half of the line */
     margin: 10  px; /* Adjust the margin for spacing */
+    justify-content: center;
+
   }
   
   .crystal {

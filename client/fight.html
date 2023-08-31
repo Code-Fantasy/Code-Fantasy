@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fight.css">
+    <title>RPG Battle Simulation</title>
+
+
+</head>
+<body onload="startFight()">
+
+
+    <h1>RPG Battle Simulation</h1>
+
+    <div class="battle-container">
+        <div class="teams">
+            <div class="team-container">
+                <div id="wholeTeam">
+                <div class="crystal"><img class="crystal1" src="image-team/water.gif" alt="water crystal"></div>
+                <div class="team-name">Team 1</div>
+                <div class="character-container">
+                    <div>
+                        <img src="image-team/testwar.png" alt="Warrior" class="character-image flipped" id="team1-char1">
+                        <div class="health-bar" id="team1-hp1"></div>
+                    </div>
+                    <div>
+                        <img src="image-team/testrogue.png" alt="Rogue" class="character-image flipped" id="team1-char2">
+                        <div class="health-bar" id="team1-hp2"></div>
+                    </div>
+                    <div>
+                        <img src="image-team/testbm.png" alt="black-mage" class="character-image flipped" id="team1-char3">
+                        <div class="health-bar" id="team1-hp3"></div>
+                    </div>
+                    <div>
+                        <img src="image-team/testwm.png" alt="white-mage" class="character-image flipped" id="team1-char4">
+                        <div class="health-bar" id="team1-hp4"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="team-container">
+                <div id="wholeTeam2">
+                    <div id="crystal"><img class="crystal1" src="image-team/earth.gif" alt="earth crystal"></div>
+                      
+                <div class="team-name">Team 2</div>
+                <div class="character-container">
+                    <div>
+                        <img src="image-team/testwar.png" alt="Warrior" class="character-image" id="team2-char1">
+                        <div class="health-bar" id="team2-hp1"></div>
+                    </div>
+                    <div>
+                        <img src="image-team/testrogue.png" alt="Rogue" class="character-image" id="team2-char2">
+                        <div class="health-bar" id="team2-hp2"></div>
+                    </div>
+                    <div>
+                        <img src="image-team/testbm.png" alt="black-mage" class="character-image" id="team2-char3">
+                        <div class="health-bar" id="team2-hp3"></div>
+                    </div>
+                    <div>
+                        <img src="image-team/testwm.png" alt="white-mage" class="character-image" id="team2-char4">
+                        <div class="health-bar" id="team2-hp4"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn" id="playAgain">Play Again</button>
+
+
+    <script src="scriptfight.js"></script>
+    
+</body>
+</html>
+

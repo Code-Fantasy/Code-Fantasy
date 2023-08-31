@@ -23,6 +23,30 @@ width: 100%;
         animation: fade-in 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) 1s both;
 }
 
+#createbtn1 {
+  width: 170px; 
+  background: linear-gradient(180deg, #2B238C 9%, rgba(8.29, 5.24, 43.35, 0) 100%); 
+  border-radius: 13px; 
+  border: 1.50px #FBFBFF solid; 
+  color: white; 
+  height: 54px; 
+  font-size: 22px;
+  font-family: 'Grenze', serif;
+  font-weight: 500; 
+  word-wrap: break-word;
+  cursor: pointer;
+  margin-top: 20px;
+  }
+#createbtn1:hover {
+  transition: 1000ms;
+  /* padding: 10px 50px;  */
+  transform: translateX(-0px);
+  background-color: white;
+  color: #374065;
+  font-weight: bold;
+  border: solid 2px rgb(255, 255, 255);
+  }
+
 @-webkit-keyframes fade-in {
 0% {
   opacity: 0;
@@ -113,9 +137,14 @@ p{
  100% { opacity:1; }
 } 
 
+#test {
+  width: 50px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
 
 #body1 {
-background-image: url('/clientmd/images/bluebg.jpg');
+background-image: url('/code-fantasy/client/image-home/bluebg.jpg');
 background-size: cover;
 background-repeat: no-repeat;
 height: 100vh;
@@ -246,6 +275,32 @@ cursor: pointer;
 margin-top: 20px;
 
 }
+
+
+#deletebtn {
+  width: 170px; 
+background: linear-gradient(180deg, #2B238C 9%, rgba(8.29, 5.24, 43.35, 0) 100%); 
+border-radius: 13px; 
+border: 1.50px #FBFBFF solid; 
+color: white; 
+height: 54px; 
+font-size: 36px;
+font-family: 'Grenze', serif;
+font-weight: 500; 
+word-wrap: break-word;
+cursor: pointer;
+margin-top: 20px;
+}
+
+#deletebtn:hover {
+  transition: 1000ms;
+  /* padding: 10px 50px;  */
+  transform: translateX(-0px);
+  background-color: white;
+  color: #374065;
+  font-weight: bold;
+  border: solid 2px rgb(255, 255, 255);
+  }
 
 #createbtn:hover {
 transition: 1000ms;
