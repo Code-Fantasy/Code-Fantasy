@@ -1,5 +1,18 @@
 window.onload = defaut();
- 
+
+// const soundFile = document.getElementById('soundFile');
+// soundFile.play();
+
+// const warriordiv = document.getElementById('warriordiv')
+
+const menu = new Audio('/code-fantasy/client/sounds/menu.mp3')
+
+
+menu.play();
+
+
+
+
 function defaut() {
   warriordiv.classList.toggle('active');
   warriordiv.style.display = 'flex';
@@ -21,19 +34,19 @@ function nextsound(){
   setTimeout
 };
 
-const firstSound = new Audio('/code-fantasy/client/sounds/menu.mp3');
+
+
+
+
 
 function nextpage() {
   document.onkeydown= e => location='playercreation.html'
-  const firstSound = sessionStorage.getItem('soundFile');
   // Play the sound file.
-  firstSound.play();
 }
 
 // firstSound.play();
 
 // Store the sound file in sessionStorage
-sessionStorage.setItem('soundFile', firstSound);
 
 
 

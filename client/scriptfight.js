@@ -70,12 +70,12 @@ class Character {
 
 class Warrior extends Character {
     constructor() {
-        super('Warrior', 650, 0.05);
+        super('Warrior', 850, 0.05);
         this.protectingAlly = null;
     }
 
     slash(target, attackerTeamId, defenderTeamId) {
-        target.takeDamage(this.name, attackerTeamId, defenderTeamId, 50);
+        target.takeDamage(this.name, attackerTeamId, defenderTeamId, 180);
     }
 
     protega(ally) {
@@ -86,36 +86,36 @@ class Warrior extends Character {
 
 class Rogue extends Character {
     constructor() {
-        super('Rogue', 550, 0.1);
+        super('Rogue', 750, 0.1);
     }
 
     slash(target, attackerTeamId, defenderTeamId) {
-        target.takeDamage(this.name, attackerTeamId, defenderTeamId, 50);
+        target.takeDamage(this.name, attackerTeamId, defenderTeamId, 180);
     }
 
 }
 
 class Monk extends Character {
     constructor() {
-        super('Monk', 600, 0.05);
+        super('Monk', 800, 0.05);
     }
 
     punch(target, attackerTeamId, defenderTeamId) {
-        target.takeDamage(this.name, attackerTeamId, defenderTeamId, 60);
+        target.takeDamage(this.name, attackerTeamId, defenderTeamId, 200);
     }
 }
 
 class WhiteMage extends Character {
     constructor() {
-        super('White Mage', 450, 0.05);
+        super('White Mage', 650, 0.05);
     }
 
     strike(target, attackerTeamId) {
-        target.takeDamage(this.name, attackerTeamId, attackerTeamId, 50);
+        target.takeDamage(this.name, attackerTeamId, attackerTeamId, 170);
     }
 
     curaga(ally, attackerTeamId) {
-        this.heal(ally, 40);
+        this.heal(ally, 20);
         console.log(`${attackerTeamId} ${this.name} used Curaga on ${attackerTeamId} ${ally.name}. HP: ${ally.healthPoints}/${ally.maxHealthPoints}`);
     }
 
@@ -145,15 +145,15 @@ class WhiteMage extends Character {
 
 class BlackMage extends Character {
     constructor() {
-        super('Black Mage', 500, 0.05);
+        super('Black Mage', 700, 0.05);
     }
 
     strike(target, attackerTeamId, defenderTeamId) {
-        target.takeDamage(this.name, attackerTeamId, defenderTeamId, 30);
+        target.takeDamage(this.name, attackerTeamId, defenderTeamId, 160);
     }
 
     firaga(target, attackerTeamId, defenderTeamId) {
-        target.takeDamage(this.name, attackerTeamId, defenderTeamId, 80);
+        target.takeDamage(this.name, attackerTeamId, defenderTeamId, 200);
     }
 }
 
@@ -249,6 +249,11 @@ function performTurn(attackerTeam, defenderTeam, attackerTeamId, defenderTeamId,
 function startFight() {
     const maxTurns = 50;
 
+    const fightSound = new Audio('/code-fantasy/client/sounds/Combat theme 1.mp3')
+
+
+    fightSound.play();
+
     function performNextTurn() {
         let currentTurns = maxTurns;
 
@@ -283,7 +288,7 @@ function startFight() {
                 }
 
                 currentTurns--;
-                setTimeout(performNextTurn, 1000);
+                setTimeout(performNextTurn, 1500);
             });
         });
     }
@@ -302,54 +307,31 @@ playAgain.addEventListener('click', ()=>{
   })
 
   function endGame() {
-    const team1Alive = team1.every(character => character.isAlive());
-    const team2Alive = team2.every(character => character.isAlive());
-    const victorySound = new Audio('/code-fantasy/client/sounds/theme_victoire.mp3');
-    const fightSound = new Audio('/code-fantasy/client/sounds/Combat theme 1.mp3')
+    const playAgain = document.querySelector('.play-again');
 
-
-
-    if (!team1Alive || !team2Alive) {
+    function endGame() {
+    //   const team1Alive = team1.every(character => character.isAlive());
+    //   const team2Alive = team2.every(character => character.isAlive());
+    
+      if (!team1.every(character => character.isAlive()) || !team2.every(character => character.isAlive())) {
         playAgain.style.display = 'block';
-        victorySound.play();
-        // fightSound.pause();
-
-// Stop fightSound when victorySound is played.
-// fightSound.addEventListener('ended', () => {
-//     victorySound.play();
-// });
-
-victorySound.play();
-
-        
-    } else {
+      } else {
         playAgain.style.display = 'none';
-        fightSound.play();
+      }
     }
-
+    
     if (team1Alive) {
-        console.log('Team 1 wins the battle!');
-    } else {
-        console.log('Team 2 wins the battle!');
+      console.log('Team 1 wins the battle!');
+      endGame();
+    } else if (team2Alive) {
+      console.log('Team 2 wins the battle!');
+      endGame();
     }
 }
-endGame()
-    const fightSound = new Audio('/code-fantasy/client/sounds/Combat theme 1.mp3')
-
-    fightSound.play();
 // Attach click event to the start button
 
 
 
 ////// checkpoint//////
 
-function changeBackground(imageUrl) {
-    document.body.style.backgroundImage = `url('${imageUrl}')`;
-  }
-
-
-  const startfight = document.getElementById('startfight')
-  startfight.addEventListener('click', ()=>{
-    location.href = "fight.html";
-  })
 
